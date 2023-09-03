@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<head>
+  <title>
+    user input information
+  </title>
+  <link
+  href='{{url_for("static",filename="css/main.css")}}' rel='stylesheet'>
+  <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- Toastr -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+  <!--axios-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <form method="post" action="/submit">
+      <div class="name">
+        <label>Target name
+          <span class="red">*</span>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </label>
+        <input type="text" id="name" value="Harris" name="name"/>
+      </div>
+      <div class="business-description">
+        <label>Business Description
+          <span class="red">*</span>:&nbsp;
+        </label>
+        <textarea id="business_description" name="businessDescription">Harris Scarfe is an Australian retailer that sells bed linen, kitchenware, homewares, electrical appliances and apparel. It has a e-commerce retail presence in Australia and is considered a multi-channel lifestyle and homewares store. Australia, Harris Scarfe currently operates 52 retail stores nationally as a full range lifestyle and homewares store. In 2015, ownership of Harris Scarfe was transferred to Steinhoff Asia Pacific, an international retail and manufacturing conglomerate listed on the Frankfurt stock exchange. In December 2017, Steinhoff’s was accused of overstating its profits and the share price dropped by 90%[1] The company then entered a period of intense asset sell off, which resulted in Harris Scarfe being sold to Allegro private equity group in December 2019. Shortly after, Allegro put Harris Scarfe and its related entities into administration. Spotlight Group then bought the business out of administration in April 2020
+        </textarea>
+      </div>
+      <div class="screening-criteria">
+        <label>Screening criteria:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </label>
+        <textarea id="screening_criteria" name="screeningCriteria">string</textarea>
+      </div>
+      <div class="email">
+        <label>Email
+          <span class="red">*</span>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </label>
+        <input type="email" name="email" id="email" value="hello@gmail.com"/>
+      </div>
+      <div class="submit">
+        <label>Submit:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </label>
+        <input class="submit-btn" type="submit" onclick="onSumbitBtn()" value="submit"/>
+      </div>
+    </form>
+  </div>
+  <script>
+    // Default Configuration for toastr
+    $(document).ready(function () {
+      toastr.options = {
+        'closeButton': true,
+        'debug': false,
+        'newestOnTop': false,
+        'progressBar': true,
+        'positionClass': 'toast-top-right',
+        'preventDuplicates': false,
+        'showDuration': '1000',
+        'hideDuration': '1000',
+        'timeOut': '5000',
+        'extendedTimeOut': '1000',
+        'showEasing': 'swing',
+        'hideEasing': 'linear',
+        'showMethod': 'fadeIn',
+        'hideMethod': 'fadeOut'
+      }
+    });
+
+    function onSumbitBtn() {
+      toastr.options.timeOut = 1500;
+      toastr.success("your submition is successful.");
+    }
+  </script>
+</body></html>
