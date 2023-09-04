@@ -30,8 +30,8 @@ def submit_data():
 				file.write(_stringForData)
 
 			# Email and password (use an App Password if you have 2FA enabled)
-			sender_email = "" # your actual email
-			sender_password = "" # your actual pass
+			sender_email = "valsgpt@gmail.com" # your actual email
+			sender_password = "yujfkhvrekhmvhbx" # your actual pass
 			recipient_email = _email
 
 			# Create the message
