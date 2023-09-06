@@ -5,26 +5,17 @@ from email.mime.text import MIMEText
 from email.mime.base import MIMEBase
 from email import encoders
 from app import app
-from flask import flash, render_template, request, redirect	
-from wsgiref.simple_server import make_server
+from flask import render_template, request, redirect	
+from waitress import serve
 
 @app.route('/')
-def Web_App(environment,response):
-	status='200 OK'
-	headers=[('content-type','text/html; charset=utf-8')]
-	response(status,headers)
-	fname = "templates/userInput.html"
-	html_file = open(fname, 'r', encoding='utf-8')
-	source_code = html_file.read() 
-	return [bytes(source_code, 'utf8')]
-
-with make_server('',5000,Web_App) as server:	
-    print('serving on port 5000...\nvisit http://127.0.0.1:5000\nTo exit press ctrl + c')
-    server.serve_forever()
-
+def main():
+	return render_template("userInput.html")
+	
 @app.route('/submit', methods=['POST'])
 def submit_data():
 	try:
+		print("hi")
 		_name = request.form["name"]
 		_businessDescription = request.form["businessDescription"]
 		_screeningCriteria = request.form["screeningCriteria"]
@@ -42,7 +33,7 @@ def submit_data():
 
 			# Email and password (use an App Password if you have 2FA enabled)
 			sender_email = "valsgpt@gmail.com" # your actual email
-			sender_password = "darling-tarmac-cuddle-finalize-railing" # your actual pass
+			sender_password = "unttfccwpplkxwaq" # your actual pass
 			recipient_email = _email
 
 			# Create the message
@@ -58,7 +49,7 @@ def submit_data():
 			encoders.encode_base64(part)
 			part.add_header("Content-Disposition", f"attachment; filename= {file_path}")
 			msg.attach(part)
-
+			print('hi')
 			# Send the email
 			server = smtplib.SMTP("smtp.gmail.com", 587)
 			server.starttls()
@@ -81,7 +72,10 @@ def submit_data():
 		print("The 'try except' is finished")
 @app.route('/welcome')
 def welcome():
+	print('hi')
 	return render_template('welcome.html')
 
 if __name__ == "__main__":
-  app.run()
+	serve(app, host="0.0.0.0", port=8080)
+  # app.run()
+	
