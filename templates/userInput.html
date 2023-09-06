@@ -3,8 +3,6 @@
   <title>
     user input information
   </title>
-  <link
-  href='{{url_for("static",filename="css/main.css")}}' rel='stylesheet'>
   <!-- jQuery -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <!-- Toastr -->
@@ -12,6 +10,81 @@
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
   <!--axios-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js"></script>
+  <!--style-->
+  <style>
+    .container {
+      max-width: 1400px;
+      width: 100%;
+      margin: auto auto auto 400px;
+      padding: 100px;
+    }
+
+    .red {
+      color: red;
+    }
+
+    .name {
+      max-width: 600px;
+      width: 100%;
+      font-size: 26px;
+      margin-bottom: 30px;
+    }
+
+    .email {
+      max-width: 600px;
+      width: 100%;
+      font-size: 26px;
+      margin-bottom: 100px;
+    }
+
+    .submit {
+      max-width: 600px;
+      width: 100%;
+      font-size: 26px;
+      margin-bottom: 30px;
+    }
+
+    input {
+      font-size: 20px;
+      padding: 5px 10px;
+    }
+
+    .business-description {
+      display: flex;
+      font-size: 26px;
+      margin-bottom: 30px;
+    }
+
+    .screening-criteria {
+      display: flex;
+      font-size: 26px;
+      margin-bottom: 30px;
+    }
+
+    textarea {
+      font-size: 20px;
+      padding: 5px 10px;
+      max-width: 600px;
+      width: 100%;
+      height: 80px;
+    }
+
+    .submit-btn {
+      max-width: 150px;
+      width: 100%;
+      padding: 10px 15px;
+      font-size: 20px;
+      background-color: #3ea9a3;
+      color: #fff;
+      border: solid 1px #3ea9a3;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    .submit-btn:hover {
+      background-color: #159790;
+    }
+  </style>
 </head>
 <body>
   <div class="container">

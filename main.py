@@ -6,10 +6,21 @@ from email.mime.base import MIMEBase
 from email import encoders
 from app import app
 from flask import flash, render_template, request, redirect	
+from wsgiref.simple_server import make_server
 
 @app.route('/')
-def main():
-	return render_template('userInput.html')
+def Web_App(environment,response):
+	status='200 OK'
+	headers=[('content-type','text/html; charset=utf-8')]
+	response(status,headers)
+	fname = "templates/userInput.html"
+	html_file = open(fname, 'r', encoding='utf-8')
+	source_code = html_file.read() 
+	return [bytes(source_code, 'utf8')]
+
+with make_server('',5000,Web_App) as server:	
+    print('serving on port 5000...\nvisit http://127.0.0.1:5000\nTo exit press ctrl + c')
+    server.serve_forever()
 
 @app.route('/submit', methods=['POST'])
 def submit_data():
@@ -31,7 +42,7 @@ def submit_data():
 
 			# Email and password (use an App Password if you have 2FA enabled)
 			sender_email = "valsgpt@gmail.com" # your actual email
-			sender_password = "yujfkhvrekhmvhbx" # your actual pass
+			sender_password = "darling-tarmac-cuddle-finalize-railing" # your actual pass
 			recipient_email = _email
 
 			# Create the message
@@ -73,4 +84,4 @@ def welcome():
 	return render_template('welcome.html')
 
 if __name__ == "__main__":
-    app.run()
+  app.run()
