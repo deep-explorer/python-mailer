@@ -7,15 +7,23 @@ from email import encoders
 from app import app
 from flask import render_template, request, redirect	
 from waitress import serve
-
+	
 @app.route('/')
 def main():
 	return render_template("userInput.html")
-	
+# def Web_App(environment, response):
+# 	status='200 OK'
+# 	headers=[('content-type','text/html; charset=utf-8')]
+# 	response(status,headers)
+# 	fname = "templates/userInput.html"
+# 	html_file = open(fname, 'r', encoding='utf-8')
+# 	source_code = html_file.read() 
+# 	print(response)
+# 	return [bytes(source_code, 'utf8')]
+
 @app.route('/submit', methods=['POST'])
 def submit_data():
 	try:
-		print("hi")
 		_name = request.form["name"]
 		_businessDescription = request.form["businessDescription"]
 		_screeningCriteria = request.form["screeningCriteria"]
@@ -49,7 +57,6 @@ def submit_data():
 			encoders.encode_base64(part)
 			part.add_header("Content-Disposition", f"attachment; filename= {file_path}")
 			msg.attach(part)
-			print('hi')
 			# Send the email
 			server = smtplib.SMTP("smtp.gmail.com", 587)
 			server.starttls()
@@ -72,10 +79,10 @@ def submit_data():
 		print("The 'try except' is finished")
 @app.route('/welcome')
 def welcome():
-	print('hi')
 	return render_template('welcome.html')
 
+def create_app():
+   return app
+
 if __name__ == "__main__":
-	serve(app, host="0.0.0.0", port=8080)
-  # app.run()
-	
+  app.run()
